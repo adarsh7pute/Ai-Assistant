@@ -1,4 +1,5 @@
 import axios from "axios";
+const API = import.meta.env.VITE_API_URL;
 
 const geminiResponse = async (command, assistantName = "Your Assistant", userName = "User", imageData = null) => {
   const lowerCommand = command?.toLowerCase().trim() || "";
@@ -149,7 +150,7 @@ const geminiResponse = async (command, assistantName = "Your Assistant", userNam
 
   // If no command matched, proceed with the API call
   try {
-    const res = await axios.post(import.meta.env.VITE_API_URL, {
+    const res = await axios.post(API, {
       prompt: command,
       image: imageData
     });
